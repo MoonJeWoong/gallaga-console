@@ -1,4 +1,8 @@
 package gallaga2.model.wrapper;
 
-public class Direction {
+public enum Direction {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
 }

@@ -10,4 +10,11 @@ public class Enemy {
     private Direction direction;
     private Velocity velocity;
 
+    public Enemy(Position position) {
+        this.position = position;
+    }
+
+    public void move() {}
+
+
 }
