@@ -22,7 +22,7 @@ public enum Command {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    private boolean isSameValue(String inputValue) {
+    public boolean isSameValue(String inputValue) {
         return Objects.equals(this.inputValue, inputValue);
     }
 }
