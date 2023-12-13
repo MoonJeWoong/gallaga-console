@@ -2,19 +2,9 @@ package gallaga2.model;
 
 import gallaga2.model.wrapper.*;
 
-public class Enemy {
+public class Enemy extends CollidingBody {
 
-    private Position position;
-    private HitPoint hitPoint;
-    private Damage damage;
-    private Direction direction;
-    private Velocity velocity;
-
-    public Enemy(Position position) {
-        this.position = position;
+    public Enemy(Position position, Velocity velocity, HitPoint hitPoint) {
+        super(position, Direction.DOWN, velocity, hitPoint, new Damage(1));
     }
-
-    public void move() {}
-
-
 }

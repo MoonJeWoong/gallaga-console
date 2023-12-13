@@ -1,19 +1,11 @@
 package gallaga2.model;
 
-import gallaga2.model.wrapper.Damage;
-import gallaga2.model.wrapper.Direction;
-import gallaga2.model.wrapper.Position;
+import gallaga2.model.wrapper.*;
 
-public class Bullet {
+public class Bullet extends CollidingBody {
 
-    private Position position;
-    private Direction direction;
-    private Damage damage;
 
     public Bullet(Position position) {
-        this.position = position;
-        this.direction = Direction.UP;
+        super(position, Direction.UP, new Velocity(1), new HitPoint(1), new Damage(1));
     }
-
-    public void move() {}
 }

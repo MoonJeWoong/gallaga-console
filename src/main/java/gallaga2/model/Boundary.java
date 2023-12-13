@@ -1,15 +1,10 @@
 package gallaga2.model;
 
-import gallaga.model.wrapper.Damage;
-import gallaga.model.wrapper.Position;
+import gallaga2.model.wrapper.*;
 
-public class Boundary {
+public class Boundary extends CollidingBody {
 
-    private Position position;
-    private Damage damage;
-
-    public Boundary(Position position, Damage damage) {
-        this.position = position;
-        this.damage = damage;
+    public Boundary(Position position, Direction direction, Velocity velocity, HitPoint hitPoint, Damage damage) {
+        super(position, direction, velocity, hitPoint, damage);
     }
 }

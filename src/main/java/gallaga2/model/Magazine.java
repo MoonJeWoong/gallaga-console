@@ -12,9 +12,11 @@ public class Magazine {
         this.quantity = DEFAULT_BULLET_LIMIT;
     }
 
-    public Bullet loadOneBullet(Position position) {
+    public Bullet makeOneBullet(Position position) {
         return new Bullet(position);
     }
 
-    public void reloadOneBullet() {}
+    public void reloadOneBullet() {
+        quantity++;
+    }
 }
