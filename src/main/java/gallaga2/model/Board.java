@@ -97,7 +97,7 @@ public class Board {
         return boundaries.countEliminatedBoundaries() > 0;
     }
 
-    private void generateEnemy() {
+    public void generateEnemy() {
         EnemyGenerator enemyGenerator = new EnemyGenerator(new RandomNumberGenerator());
         Enemy newEnemy = enemyGenerator.generate();
         enemies.add(newEnemy);
