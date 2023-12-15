@@ -1,6 +1,6 @@
 package interfaces;
 
-import gallaga2.model.Bullet;
+import gallaga2.model.bullet.Bullet;
 
 public interface Bullets {
 

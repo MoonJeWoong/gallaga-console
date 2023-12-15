@@ -1,5 +1,6 @@
-package gallaga2.model;
+package gallaga2.model.player;
 
+import gallaga2.model.collidingbody.CollidingBody;
 import gallaga2.model.wrapper.*;
 
 public class Player extends CollidingBody {

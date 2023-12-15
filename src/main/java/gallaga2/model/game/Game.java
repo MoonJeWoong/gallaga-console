@@ -1,5 +1,7 @@
-package gallaga2.model;
+package gallaga2.model.game;
 
+import gallaga2.dto.GameDto;
+import gallaga2.dto.GameStatusDto;
 import gallaga2.model.wrapper.Direction;
 
 public class Game {
@@ -9,6 +11,8 @@ public class Game {
 
     public Game() {
     }
+
+    public void init() {}
 
     public void fire() {
         board.fire();
@@ -30,7 +34,11 @@ public class Game {
         board.moveCollidingBodies();
     }
 
-    boolean isGameOver() {
+    public boolean isGameOver() {
         return board.isGameOver();
+    }
+
+    public GameStatusDto getGameStatus() {
+        return new GameStatusDto();
     }
 }

@@ -1,5 +1,6 @@
-package gallaga2.model;
+package gallaga2.model.player;
 
+import gallaga2.model.bullet.Bullet;
 import gallaga2.model.wrapper.Position;
 
 public class Magazine {

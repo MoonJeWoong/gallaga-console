@@ -1,5 +1,12 @@
-package gallaga2.model;
+package gallaga2.model.game;
 
+import gallaga2.model.boundary.Boundaries;
+import gallaga2.model.boundary.Boundary;
+import gallaga2.model.bullet.Bullet;
+import gallaga2.model.bullet.Bullets;
+import gallaga2.model.enemy.Enemies;
+import gallaga2.model.enemy.Enemy;
+import gallaga2.model.player.Player;
 import gallaga2.model.wrapper.Direction;
 import gallaga2.util.RandomNumberGenerator;
 

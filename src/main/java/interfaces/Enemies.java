@@ -1,6 +1,6 @@
 package interfaces;
 
-import gallaga2.model.Enemy;
+import gallaga2.model.enemy.Enemy;
 
 public interface Enemies {
 

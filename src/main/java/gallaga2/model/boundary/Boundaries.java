@@ -1,4 +1,6 @@
-package gallaga2.model;
+package gallaga2.model.boundary;
+
+import gallaga2.model.collidingbody.CollidingBody;
 
 import java.util.Set;
 

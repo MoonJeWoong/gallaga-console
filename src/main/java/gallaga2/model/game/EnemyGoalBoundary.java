@@ -1,5 +1,6 @@
-package gallaga2.model;
+package gallaga2.model.game;
 
+import gallaga2.model.boundary.Boundary;
 import gallaga2.model.wrapper.*;
 
 public class EnemyGoalBoundary extends Boundary {

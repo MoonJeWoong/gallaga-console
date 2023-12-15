@@ -1,4 +1,4 @@
-package gallaga2.model;
+package gallaga2.model.game;
 
 public class Score {
 

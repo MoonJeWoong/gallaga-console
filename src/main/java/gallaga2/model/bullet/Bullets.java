@@ -1,6 +1,5 @@
-package gallaga2.model;
+package gallaga2.model.bullet;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class Bullets {

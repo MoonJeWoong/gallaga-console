@@ -1,5 +1,6 @@
-package gallaga2.model;
+package gallaga2.model.game;
 
+import gallaga2.model.enemy.Enemy;
 import gallaga2.util.NumberGenerator;
 
 public class EnemyGenerator {
