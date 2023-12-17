@@ -1,9 +1,16 @@
-package gallaga2.model.player;
+package interfaces;
 
 import gallaga2.model.bullet.Bullet;
 import gallaga2.model.collidingbody.CollidingBody;
 import gallaga2.model.collidingbody.CollidingBodyType;
-import gallaga2.model.wrapper.*;
+import gallaga2.model.player.Magazine;
+import gallaga2.model.wrapper.Column;
+import gallaga2.model.wrapper.Damage;
+import gallaga2.model.wrapper.Direction;
+import gallaga2.model.wrapper.HitPoint;
+import gallaga2.model.wrapper.Position;
+import gallaga2.model.wrapper.Row;
+import gallaga2.model.wrapper.Velocity;
 
 public class Player extends CollidingBody {
 

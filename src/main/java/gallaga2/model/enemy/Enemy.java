@@ -1,6 +1,7 @@
 package gallaga2.model.enemy;
 
 import gallaga2.model.collidingbody.CollidingBody;
+import gallaga2.model.collidingbody.CollidingBodyType;
 import gallaga2.model.wrapper.*;
 
 public class Enemy extends CollidingBody {
@@ -15,7 +16,8 @@ public class Enemy extends CollidingBody {
                 Direction.DOWN,
                 velocity,
                 hitPoint,
-                new Damage(1)
+                new Damage(1),
+                CollidingBodyType.ENEMY
         );
     }
 }

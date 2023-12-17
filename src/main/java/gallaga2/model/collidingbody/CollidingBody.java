@@ -12,13 +12,15 @@ public abstract class CollidingBody {
     protected Velocity velocity;
     private HitPoint hitPoint;
     private Damage damage;
+    private CollidingBodyType collidingBodyType;
 
-    public CollidingBody(Position position, Direction direction, Velocity velocity, HitPoint hitPoint, Damage damage) {
+    public CollidingBody(Position position, Direction direction, Velocity velocity, HitPoint hitPoint, Damage damage, CollidingBodyType collidingBodyType) {
         this.position = position;
         this.direction = direction;
         this.velocity = velocity;
         this.hitPoint = hitPoint;
         this.damage = damage;
+        this.collidingBodyType = collidingBodyType;
     }
 
     public boolean isCollidedWith(CollidingBody other) {
@@ -43,11 +45,12 @@ public abstract class CollidingBody {
 
     public void collideWith(CollidingBody other) {
         decreaseHitPoint(other.damage);
-//        other.decreaseHitPoint(this.damage);
     }
 
     public void move() {
-
+        for (int i=0; i<velocity.getValue(); i++) {
+            position.move(direction);
+        }
     }
 
     private void decreaseHitPoint(Damage damage) {
@@ -64,7 +67,23 @@ public abstract class CollidingBody {
         return nextPath;
     }
 
-    protected Position getPosition() {
+    public boolean isEliminated() {
+        return hitPoint.isLessOrEqualThanZero();
+    }
+
+    protected void changeDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    protected void changeVelocity(Velocity velocity) {
+        this.velocity = velocity;
+    }
+
+    public Position getPosition() {
         return position;
+    }
+
+    public CollidingBodyType getType() {
+        return collidingBodyType;
     }
 }

@@ -1,8 +1,9 @@
 package gallaga2.model.enemy;
 
+import java.util.Iterator;
 import java.util.Set;
 
-public class Enemies {
+public class Enemies implements Iterable<Enemy> {
 
     private Set<Enemy> enemies;
 
@@ -29,5 +30,10 @@ public class Enemies {
 
     public Set<Enemy> getEnemies() {
         return enemies;
+    }
+
+    @Override
+    public Iterator<Enemy> iterator() {
+        return enemies.iterator();
     }
 }

@@ -1,6 +1,7 @@
 package gallaga2.model.boundary;
 
 import gallaga2.model.collidingbody.CollidingBody;
+import gallaga2.model.collidingbody.CollidingBodyType;
 import gallaga2.model.wrapper.*;
 
 public abstract class Boundary extends CollidingBody {
@@ -8,16 +9,17 @@ public abstract class Boundary extends CollidingBody {
     public Boundary(
             Position position,
             Direction direction,
-            Velocity velocity,
             HitPoint hitPoint,
-            Damage damage
+            Damage damage,
+            CollidingBodyType collidingBodyType
     ) {
         super(
                 position,
                 direction,
-                velocity,
+                new Velocity(0),
                 hitPoint,
-                damage
+                damage,
+                collidingBodyType
         );
     }
 }

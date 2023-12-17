@@ -12,8 +12,7 @@ import gallaga2.view.OutputView;
 public class Controller {
 
     public void run() {
-        Game game = new Game();
-        game.init(); // 게임 상태 초기화
+        Game game = new Game(); // 게임 상태 초기화
         GameDto gameDto = GameViewConverter.convertToGameDto(game.getGameStatus());
         OutputView.printGameScreen(gameDto);
         while (game.isGameOver()) {  // 게임 종료 전까지 반복
@@ -24,25 +23,25 @@ public class Controller {
             executeCommand(game, inputCommand);
 
             gameDto = GameViewConverter.convertToGameDto(game.getGameStatus());
-            OutputView.printGameScreen(GameViewConverter.convertToGameDto(game.getGameStatus()));
+            OutputView.printGameScreen(gameDto);
         }
     }
 
     private void executeCommand(Game game, InputCommand inputCommand) {
         if (inputCommand.equals(InputCommand.MOVE_LEFT)) {
-            game.move(Direction.LEFT);
+            game.executeMove(Direction.LEFT);
             return;
         }
         if (inputCommand.equals(InputCommand.MOVE_RIGHT)) {
-            game.move(Direction.RIGHT);
+            game.executeMove(Direction.RIGHT);
             return;
         }
         if (inputCommand.equals(InputCommand.TURN_OVER)) {
-            game.turnOver();
+            game.executeTurnOver();
             return;
         }
         if (inputCommand.equals(InputCommand.FIRE)) {
-            game.fire();
+            game.executeFire();
         }
     }
 

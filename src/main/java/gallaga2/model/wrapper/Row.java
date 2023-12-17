@@ -2,6 +2,9 @@ package gallaga2.model.wrapper;
 
 public class Row {
 
+    public static final int MAX_VALUE = 20;
+    public static final int MIN_VALUE = 0;
+
     private final int value;
 
     public Row(int value) {

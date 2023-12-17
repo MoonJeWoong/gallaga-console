@@ -2,9 +2,10 @@ package gallaga2.model.boundary;
 
 import gallaga2.model.collidingbody.CollidingBody;
 
+import java.util.Iterator;
 import java.util.Set;
 
-public class Boundaries {
+public class Boundaries implements Iterable<Boundary>{
 
     Set<Boundary> boundaries;
 
@@ -29,5 +30,10 @@ public class Boundaries {
 
     public Set<Boundary> getBoundaries() {
         return boundaries;
+    }
+
+    @Override
+    public Iterator<Boundary> iterator() {
+        return boundaries.iterator();
     }
 }

@@ -1,8 +1,9 @@
 package gallaga2.model.bullet;
 
+import java.util.Iterator;
 import java.util.Set;
 
-public class Bullets {
+public class Bullets implements Iterable<Bullet> {
 
     private Set<Bullet> bullets;
 
@@ -29,5 +30,10 @@ public class Bullets {
 
     public Set<Bullet> getBullets() {
         return bullets;
+    }
+
+    @Override
+    public Iterator<Bullet> iterator() {
+        return bullets.iterator();
     }
 }
