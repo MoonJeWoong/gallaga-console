@@ -1,6 +1,7 @@
 package gallaga2.model.player;
 
 import gallaga2.model.bullet.Bullet;
+import gallaga2.model.wrapper.Direction;
 import gallaga2.model.wrapper.Position;
 
 public class Magazine {
@@ -16,7 +17,7 @@ public class Magazine {
     public Bullet makeOneBullet(Position position) {
         if (quantity > 0) {
             quantity--;
-            return new Bullet(position);
+            return new Bullet(position.move(Direction.UP).move(Direction.UP));
         }
         throw new IllegalArgumentException("쏠 수 있는 총알이 존재하지 않습니다.");
     }
