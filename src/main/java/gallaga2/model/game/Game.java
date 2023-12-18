@@ -1,6 +1,5 @@
 package gallaga2.model.game;
 
-import gallaga2.dto.GameStatusDto;
 import gallaga2.model.wrapper.Direction;
 
 public class Game {
@@ -25,8 +24,10 @@ public class Game {
     }
 
     public void executeTurnOver() {
-        // 여기에서 Board를 이용해 턴을 진행하고
-        // 결과에서 적군이 피격되어 사라졌을 때 점수를 추가해야 한다.
+        // Board를 이용해 충돌 과정을 진행한다.
+        // 충돌 결과 제거된 적군의 수 만큼 점수를 추가
+        // 체력이 0이된 개체들을 제거 후 남은 개체들을 움직임
+        // 새로운 적군을 생성
         board.progressCollision();
         score.addScore(board.countEliminatedEnemies());
         board.removeEliminatedCollidingBodies();
