@@ -23,7 +23,8 @@ public class Enemy {
     public List<Position> calculatePath(Position start) {
         List<Position> path = new ArrayList<>();
         for (int i=1; i<velocity.getValue(); i++) {
-            path.add();
+//            path.add();
         }
+        return null;
     }
 }

@@ -16,6 +16,4 @@ public class Bullet {
     public int getDamage() {
         return damage.getValue();
     }
-
-    public
 }

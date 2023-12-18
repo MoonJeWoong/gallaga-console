@@ -4,5 +4,5 @@ import gallaga.Command;
 
 public class InputView {
 
-    public static String inputCommand() {}
+    public static String inputCommand() {return null;}
 }
