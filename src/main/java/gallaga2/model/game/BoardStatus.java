@@ -24,4 +24,8 @@ public class BoardStatus {
     public void putCollidingBody(CollidingBody collidingBody) {
         boardStatus.put(collidingBody.getPosition(), collidingBody.getType());
     }
+
+    public Map<Position, CollidingBodyType> getBoardStatus() {
+        return boardStatus;
+    }
 }

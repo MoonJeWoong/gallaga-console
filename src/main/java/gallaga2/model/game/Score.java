@@ -2,6 +2,8 @@ package gallaga2.model.game;
 
 public class Score {
 
+    private static final int DEFAULT_ENEMY_SCORE = 100;
+
     private final int value;
 
     public Score(int value) {
@@ -9,11 +11,10 @@ public class Score {
     }
 
     public Score addScore(int value) {
-        // 점수 합산
-        return new Score(this.value + value);
+        return new Score(this.value + value * DEFAULT_ENEMY_SCORE);
     }
 
-    public void init() {
-        // 점수 초기화
+    public int getValue() {
+        return value;
     }
 }

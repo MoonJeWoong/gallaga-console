@@ -9,6 +9,6 @@ public class Damage {
     }
 
     public int getValue() {
-        return 0;
+        return value;
     }
 }

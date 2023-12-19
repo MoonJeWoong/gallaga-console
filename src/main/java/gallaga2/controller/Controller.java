@@ -8,13 +8,30 @@ import gallaga2.util.GameViewConverter;
 import gallaga2.view.InputCommand;
 import gallaga2.view.InputView;
 import gallaga2.view.OutputView;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Controller {
 
     public void run() {
-        Game game = new Game(); // 게임 상태 초기화
+        // 게임 상태 초기화
+        Game game = new Game();
         GameDto gameDto = GameViewConverter.convertToGameDto(game.getGameStatus());
         OutputView.printGameScreen(gameDto);
+
+
+        // 타이머 시작
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                OutputView.printGameScreen(GameViewConverter.convertToGameDto(game.getGameStatus()));
+            }
+        };
+        timer.schedule(timerTask, 2000, 2000);
+
+
+        // 게임 시작
         while (game.isGameOver()) {  // 게임 종료 전까지 반복
             CommandDto commandDto = InputView.inputCommand();
             InputCommand inputCommand = commandDto.getCommand();

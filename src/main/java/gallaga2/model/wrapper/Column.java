@@ -1,5 +1,7 @@
 package gallaga2.model.wrapper;
 
+import java.util.Objects;
+
 public class Column {
 
     public static final int MAX_VALUE = 10;
@@ -17,5 +19,26 @@ public class Column {
 
     public Column right() {
         return new Column(value + 1);
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Column column = (Column) o;
+        return getValue() == column.getValue();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getValue());
     }
 }

@@ -44,15 +44,8 @@ public class CollidingBodies implements Iterable<CollidingBody> {
         return false;
     }
 
-//    public CollidingBodies getBodiesOfType(CollidingBodyType collidingBodyType) {
-//        Set<CollidingBody> filtered = collidingBodies.stream()
-//                .filter(collidingBody -> collidingBody.isType(collidingBodyType))
-//                .collect(Collectors.toSet());
-//        return new CollidingBodies(filtered);
-//    }
-
     @Override
     public Iterator<CollidingBody> iterator() {
-        return null;
+        return collidingBodies.iterator();
     }
 }
