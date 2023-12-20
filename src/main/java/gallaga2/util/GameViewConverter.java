@@ -47,6 +47,8 @@ public class GameViewConverter {
                 Position position = new Position(new Row(i), new Column(j));
                 if (boardStatus.containsKey(position)) {
                     line.append(SYMBOL_MAPPER.get(boardStatus.get(position)));
+//                    아래 코드로 리팩토링하기
+//                    line.append(SYMBOL_MAPPER.getOrDefault(boardStatus.get(position), EMPTY_SYMBOL));
                     continue;
                 }
                 line.append(EMPTY_SYMBOL);

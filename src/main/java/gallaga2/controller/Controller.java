@@ -7,8 +7,9 @@ import gallaga2.util.GameViewConverter;
 import gallaga2.view.InputCommand;
 import gallaga2.view.InputView;
 import gallaga2.view.OutputView;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Controller {
 
@@ -29,7 +30,7 @@ public class Controller {
         OutputView.printGameScreen(gameDto);
 
         // 게임 자동 진행 타이머 시작
-        autoTimerStart(game);
+        autoTurnOverSchedulerStart(game);
 
         // 게임 시작
         while (!game.isGameOver()) {  // 게임 종료 전까지 반복
@@ -48,22 +49,21 @@ public class Controller {
         OutputView.printGameEndedMessage();
     }
 
-    private void autoTimerStart(Game game) {
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
+    private void autoTurnOverSchedulerStart(Game game) {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
                 game.executeTurnOver();
                 OutputView.printGameScreen(GameViewConverter.convertToGameDto(game.getGameStatus()));
                 if (game.isGameOver()) {
-                    timer.cancel();
-                    timer.purge();
+                    scheduler.shutdown();
                     OutputView.printGameEndedMessage();
                     System.exit(0);
                 }
+            } catch (Exception e) {
+                OutputView.printAlertMessage(e.getMessage());
             }
-        };
-        timer.schedule(timerTask, 2000, 2000);
+        }, 2000, 2000, TimeUnit.MILLISECONDS);
     }
 
     private void executeCommand(Game game, InputCommand inputCommand) {
