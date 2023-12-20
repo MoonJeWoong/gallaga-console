@@ -49,7 +49,7 @@ public abstract class CollidingBody {
 
     public void move() {
         for (int i=0; i<velocity.getValue(); i++) {
-            position.move(direction);
+            this.position = position.move(direction);
         }
     }
 

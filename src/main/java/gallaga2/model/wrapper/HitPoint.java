@@ -9,7 +9,7 @@ public class HitPoint {
     }
 
     public boolean isLessOrEqualThanZero() {
-        return value < 0;
+        return value <= 0;
     }
 
     public HitPoint decreaseHitPoint(int value) {

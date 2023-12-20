@@ -1,9 +1,13 @@
 package gallaga2.model.game;
 
-import gallaga2.model.enemy.Enemy;
+import gallaga2.model.collidingbody.Enemy;
+import gallaga2.model.wrapper.*;
 import gallaga2.util.NumberGenerator;
 
 public class EnemyGenerator {
+
+    private static final int GENERATE_PROBABILITY = 30;
+    public static final Row DEFAULT_ENEMY_GRENRATED_ROW = new Row(1);
 
     private NumberGenerator numberGenerator;
 
@@ -13,6 +17,16 @@ public class EnemyGenerator {
 
     public Enemy generate() {
         // 무작위로 적군을 생성한다.
-        return null;
+        Column randomlyGeneratedColumn = new Column(numberGenerator.generate(1, 10));
+        Velocity randomlyGeneratedVelocity = new Velocity(numberGenerator.generate(1, 3));
+        HitPoint randomlyGeneratedHitPoint = new HitPoint(numberGenerator.generate(1, 3));
+
+        return new Enemy(new Position(DEFAULT_ENEMY_GRENRATED_ROW, randomlyGeneratedColumn),
+                randomlyGeneratedVelocity, randomlyGeneratedHitPoint);
+    }
+
+    public boolean isGenerable() {
+        int result = numberGenerator.generate(0, 100);
+        return result < GENERATE_PROBABILITY;
     }
 }

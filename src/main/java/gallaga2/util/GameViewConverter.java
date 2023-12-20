@@ -14,8 +14,8 @@ import java.util.Map;
 public class GameViewConverter {
 
     private static final String PLAYER_SYMBOL = "⭐";
-    private static final String BULLET_SYMBOL = "▲";
-    private static final String ENEMY_SYMBOL = "■";
+    private static final String BULLET_SYMBOL = "🔷";
+    private static final String ENEMY_SYMBOL = "🟥";
     private static final String LEFT_BOUNDARY_SYMBOL = "|";
     private static final String RIGHT_BOUNDARY_SYMBOL = "|";
     private static final String UPPER_BOUNDARY_SYMBOL = "--";
@@ -41,9 +41,9 @@ public class GameViewConverter {
         int score = gameStatus.getScore().getValue();
 
         List<String> convertedBoardLines = new ArrayList<>();
-        for (int i=Row.MIN_VALUE; i<=Row.MAX_VALUE; i++) {
+        for (int i=Row.MIN.getValue(); i<=Row.MAX.getValue(); i++) {
             StringBuilder line = new StringBuilder();
-            for (int j= Column.MIN_VALUE; j<=Column.MAX_VALUE; j++) {
+            for (int j= Column.MIN.getValue(); j<=Column.MAX.getValue(); j++) {
                 Position position = new Position(new Row(i), new Column(j));
                 if (boardStatus.containsKey(position)) {
                     line.append(SYMBOL_MAPPER.get(boardStatus.get(position)));

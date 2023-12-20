@@ -1,9 +1,9 @@
 package gallaga2.model.game;
 
-import gallaga2.model.boundary.EnemyGoalBoundary;
-import gallaga2.model.boundary.LeftBoundary;
-import gallaga2.model.boundary.RightBoundary;
-import gallaga2.model.boundary.UpperBoundary;
+import gallaga2.model.collidingbody.boundary.EnemyGoalBoundary;
+import gallaga2.model.collidingbody.boundary.LeftBoundary;
+import gallaga2.model.collidingbody.boundary.RightBoundary;
+import gallaga2.model.collidingbody.boundary.UpperBoundary;
 import gallaga2.model.collidingbody.CollidingBodies;
 import gallaga2.model.collidingbody.CollidingBody;
 import gallaga2.model.player.Player;
@@ -14,6 +14,8 @@ import gallaga2.model.wrapper.Row;
 import gallaga2.util.RandomNumberGenerator;
 
 public class Board {
+
+    private static final int DEFAULT_BULLET_LIMIT = 3;
 
     private Player player;
     private CollidingBodies bullets;
@@ -30,29 +32,31 @@ public class Board {
 
     private void initBoundaries() {
         // 상단 경계선, 좌우 경계선, 적군 목표 경계선 생성
-        for (int i = Column.MIN_VALUE + 1; i<Column.MAX_VALUE; i++) {
+        for (int i = Column.MIN.getValue() + 1; i<Column.MAX.getValue(); i++) {
             boundaries.add(new UpperBoundary(new Position(new Row(0), new Column(i))));
-            boundaries.add(new EnemyGoalBoundary(new Position(new Row(Row.MAX_VALUE -1), new Column(i))));
+            boundaries.add(new EnemyGoalBoundary(new Position(Row.MAX.up(), new Column(i))));
         }
 
-        for (int i = Row.MIN_VALUE; i<=Row.MAX_VALUE; i++) {
-            boundaries.add(new LeftBoundary(new Position(new Row(i), new Column(Column.MIN_VALUE))));
-            boundaries.add(new RightBoundary(new Position(new Row(i), new Column(Column.MAX_VALUE))));
+        for (int i = Row.MIN.getValue(); i<=Row.MAX.getValue(); i++) {
+            boundaries.add(new LeftBoundary(new Position(new Row(i), Column.MIN)));
+            boundaries.add(new RightBoundary(new Position(new Row(i), Column.MAX)));
         }
+    }
+
+    public void movePlayer(Direction direction) {
+        player.readyForMoving(direction);
+        if (boundaries.isCollidedWith(player)) {
+            throw new IllegalArgumentException("플레이어는 경계선을 넘어 이동할 수 없습니다.");
+        }
+        player.move();
+        player.stopMoving();
     }
 
     public void generateBullet() {
+        if (DEFAULT_BULLET_LIMIT <= bullets.size()) {
+            throw new IllegalArgumentException(String.format("보드 위의 총알은 %d개를 넘길 수 없습니다.", DEFAULT_BULLET_LIMIT));
+        }
         bullets.add(player.fire());
-    }
-
-    public void readyForMovingPlayer(Direction direction) {
-        // 플레이어를 입력받은 방향으로 1의 속도로 움직이도록 업데이트한다.
-        player.readyForMoving(direction);
-    }
-
-    public void stopPlayer() {
-        // 플레이어가 다시 윗방향으로 0의 속도를 갖도록 업데이트한다.
-        player.stopMoving();
     }
 
     public void progressCollision() {
@@ -60,10 +64,6 @@ public class Board {
         // 적군, 총알의 충돌 처리
         // 경계선과 총알의 충돌 처리
         // 경계선과 적군의 충돌 처리
-
-        if (boundaries.isCollidedWith(player)) {
-            throw new IllegalArgumentException("플레이어는 해당 방향으로 더 이동할 수 없습니다.");
-        }
 
         //각각 충돌 진행
         for (CollidingBody enemy : enemies) {
@@ -90,30 +90,14 @@ public class Board {
     }
 
     public void moveCollidingBodies() {
-        // 플레이어와 경계선의 충돌 여부 검사 후 움직임
-        // 적군과 총알을 움직인다.
-
-        if (!boundaries.isCollidedWith(player)) {
-            player.move();
-        }
+        // 적군과 총알을 다음 위치로 움직인다.
         enemies.move();
         bullets.move();
     }
 
     public void removeEliminatedCollidingBodies() {
         enemies.removeEliminatedBodies();
-        removeEliminatedBullets();
-    }
-
-    private void removeEliminatedBullets() {
-        reloadPlayerBullets();
         bullets.removeEliminatedBodies();
-    }
-
-    private void reloadPlayerBullets() {
-        for (int i=0; i< bullets.countEliminatedBodies(); i++) {
-            player.reload();
-        }
     }
 
     public int countEliminatedEnemies() {
@@ -128,7 +112,9 @@ public class Board {
 
     public void generateEnemy() {
         EnemyGenerator enemyGenerator = new EnemyGenerator(new RandomNumberGenerator());
-        enemies.add(enemyGenerator.generate());
+        if (enemyGenerator.isGenerable()) {
+            enemies.add(enemyGenerator.generate());
+        }
     }
 
     public BoardStatus getBoardStatus() {

@@ -1,17 +1,17 @@
-package gallaga2.model.boundary;
+package gallaga2.model.collidingbody.boundary;
 
 import gallaga2.model.collidingbody.CollidingBodyType;
 import gallaga2.model.wrapper.*;
 
-public class RightBoundary extends Boundary {
+public class LeftBoundary extends Boundary {
 
-    public RightBoundary(Position position) {
+    public LeftBoundary(Position position) {
         super(
                 position,
-                Direction.LEFT,
+                Direction.RIGHT,
                 new HitPoint(Integer.MAX_VALUE),
                 new Damage(0),
-                CollidingBodyType.RIGHT_BOUNDARY
+                CollidingBodyType.LEFT_BOUNDARY
         );
     }
 }

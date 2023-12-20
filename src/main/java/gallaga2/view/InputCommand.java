@@ -1,13 +1,14 @@
 package gallaga2.view;
 
+import gallaga2.exception.IllegalInputCommandException;
+
 import java.util.Arrays;
 import java.util.Objects;
 
 public enum InputCommand {
     MOVE_LEFT("1"),
     MOVE_RIGHT("2"),
-    TURN_OVER("3"),
-    FIRE("4");
+    FIRE("3");
 
     private String value;
 
@@ -19,7 +20,7 @@ public enum InputCommand {
         return Arrays.stream(values())
                 .filter(inputCommand -> inputCommand.isSameValue(inputValue))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(IllegalInputCommandException::new);
     }
 
     private boolean isSameValue(String inputValue) {

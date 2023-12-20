@@ -44,6 +44,10 @@ public class CollidingBodies implements Iterable<CollidingBody> {
         return false;
     }
 
+    public int size() {
+        return collidingBodies.size();
+    }
+
     @Override
     public Iterator<CollidingBody> iterator() {
         return collidingBodies.iterator();

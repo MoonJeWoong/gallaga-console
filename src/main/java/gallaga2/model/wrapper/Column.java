@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Column {
 
-    public static final int MAX_VALUE = 10;
-    public static final int MIN_VALUE = 0;
+    public static final Column MAX = new Column(10);
+    public static final Column MIN = new Column(0);
 
     private final int value;
 

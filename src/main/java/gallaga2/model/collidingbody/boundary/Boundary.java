@@ -1,4 +1,4 @@
-package gallaga2.model.boundary;
+package gallaga2.model.collidingbody.boundary;
 
 import gallaga2.model.collidingbody.CollidingBody;
 import gallaga2.model.collidingbody.CollidingBodyType;

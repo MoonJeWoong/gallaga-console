@@ -12,15 +12,12 @@ public class Game {
         this.score = new Score(0);
     }
 
-    public void executeFire() {
-        board.generateBullet();
-        executeTurnOver();
+    public void executeMove(Direction direction) {
+        board.movePlayer(direction);
     }
 
-    public void executeMove(Direction direction) {
-        board.readyForMovingPlayer(direction);
-        executeTurnOver();
-        board.stopPlayer();
+    public void executeFire() {
+        board.generateBullet();
     }
 
     public void executeTurnOver() {
@@ -29,7 +26,8 @@ public class Game {
         // 체력이 0이된 개체들을 제거 후 남은 개체들을 움직임
         // 새로운 적군을 생성
         board.progressCollision();
-        score.addScore(board.countEliminatedEnemies());
+        System.out.println(board.countEliminatedEnemies());
+        this.score = score.addScore(board.countEliminatedEnemies());
         board.removeEliminatedCollidingBodies();
         board.moveCollidingBodies();
         board.generateEnemy();
