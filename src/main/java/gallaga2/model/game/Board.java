@@ -6,7 +6,7 @@ import gallaga2.model.collidingbody.boundary.RightBoundary;
 import gallaga2.model.collidingbody.boundary.UpperBoundary;
 import gallaga2.model.collidingbody.CollidingBodies;
 import gallaga2.model.collidingbody.CollidingBody;
-import gallaga2.model.player.Player;
+import gallaga2.model.collidingbody.Player;
 import gallaga2.model.wrapper.Column;
 import gallaga2.model.wrapper.Direction;
 import gallaga2.model.wrapper.Position;

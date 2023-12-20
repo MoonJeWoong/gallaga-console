@@ -1,4 +1,4 @@
-package gallaga2.model.player;
+package gallaga2.model.collidingbody;
 
 import gallaga2.model.collidingbody.Bullet;
 import gallaga2.model.collidingbody.CollidingBody;
