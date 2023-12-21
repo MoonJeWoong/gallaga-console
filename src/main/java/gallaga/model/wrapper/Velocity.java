@@ -1,7 +1,6 @@
 package gallaga.model.wrapper;
 
 public class Velocity {
-
     private int value;
 
     public Velocity(int value) {

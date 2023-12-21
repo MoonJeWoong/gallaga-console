@@ -8,7 +8,15 @@ public class HitPoint {
         this.value = value;
     }
 
-    public HitPoint decrease(int value) {
-        return new HitPoint(value);
+    public boolean isLessOrEqualThanZero() {
+        return value <= 0;
+    }
+
+    public HitPoint decreaseHitPoint(int value) {
+        return new HitPoint(this.value - value);
+    }
+
+    public boolean isGreaterThanZero() {
+        return value > 0;
     }
 }

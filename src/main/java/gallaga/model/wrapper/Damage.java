@@ -2,7 +2,7 @@ package gallaga.model.wrapper;
 
 public class Damage {
 
-    private int value;
+    private final int value;
 
     public Damage(int value) {
         this.value = value;

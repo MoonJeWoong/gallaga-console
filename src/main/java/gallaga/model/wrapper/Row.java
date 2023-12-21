@@ -1,9 +1,11 @@
 package gallaga.model.wrapper;
 
+import java.util.Objects;
+
 public class Row {
 
-    private static final int TOP_ROW = 0;
-    private static final int BOTTOM_ROW = 11;
+    public static final Row MAX = new Row(15);
+    public static final Row MIN = new Row(0);
 
     private final int value;
 
@@ -11,19 +13,32 @@ public class Row {
         this.value = value;
     }
 
-    public Row up(int value) {
-        return new Row(this.value - value);
+    public Row up() {
+        return new Row(value - 1);
     }
 
-    public Row down(int value) {
-        return new Row(this.value + value);
+    public Row down() {
+        return new Row(value + 1);
     }
 
-    public boolean isOverTop() {
-        return this.value <= TOP_ROW;
+    public int getValue() {
+        return value;
     }
 
-    public boolean isOverBottom() {
-        return this.value >= BOTTOM_ROW;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Row row = (Row) o;
+        return getValue() == row.getValue();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getValue());
     }
 }
