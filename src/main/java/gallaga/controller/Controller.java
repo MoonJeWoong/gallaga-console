@@ -3,7 +3,7 @@ package gallaga.controller;
 import gallaga.dto.GameDto;
 import gallaga.model.game.Game;
 import gallaga.model.wrapper.Direction;
-import gallaga.util.GameDtoConverter;
+import gallaga.util.GameStatusToDtoConverter;
 import gallaga.view.InputCommand;
 import gallaga.view.InputView;
 import gallaga.view.OutputView;
@@ -61,7 +61,7 @@ public class Controller {
 
     /**
      * 주어진 게임에 대해 일정 주기로 수행할 작업 내용을 반환한다.
-     * 일정 주기마다 게임을 한 턴 진행시키고, 게임의 현재 상태를 화면에 출력한다.
+     * 일정 주기마다 게임을 한 번 진행시키고, 게임의 현재 상태를 화면에 출력한다.
      * 게임이 종료되었을 시에는, 실행중이던 스케쥴러를 종료하고 게임 종료 메세지를 출력한 뒤 전체 프로그램을 종료한다.
      * @param game 스케쥴러를 동작시킬 대상이 되는 게임
      * @param scheduler 이 작업 내용을 수행할 스케쥴러
@@ -85,7 +85,7 @@ public class Controller {
      * @param game 현재 상태를 출력할 게임
      */
     private void displayGameStatus(Game game) {
-        GameDto gameDto = GameDtoConverter.convertToGameDto(game.getGameStatus());
+        GameDto gameDto = GameStatusToDtoConverter.convertToGameDto(game.getGameStatus());
         OutputView.printGameScreen(gameDto);
     }
 

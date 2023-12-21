@@ -1,5 +1,8 @@
 package gallaga.model.game;
 
+/**
+ * 게임에서 획득한 점수를 나타낸다.
+ */
 public class Score {
 
     private static final int DEFAULT_ENEMY_SCORE = 100;

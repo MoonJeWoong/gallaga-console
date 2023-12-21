@@ -28,12 +28,6 @@ public class Position {
         throw new IllegalArgumentException("ERROR : 적절하지 못한 방향으로 이동할 수 없습니다.");
     }
 
-    // 값 객체를 이용해서 비교할 수 있도록 수정하기
-    public boolean isSame(Position other) {
-        return other.row.equals(this.row) &&
-                other.column.equals(this.column);
-    }
-
     public Row getRow() {
         return row;
     }
