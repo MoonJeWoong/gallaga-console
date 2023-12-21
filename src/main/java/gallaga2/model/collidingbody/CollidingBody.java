@@ -83,6 +83,14 @@ public abstract class CollidingBody {
         return position;
     }
 
+    public Row getRow() {
+        return position.getRow();
+    }
+
+    public Column getColumn() {
+        return position.getColumn();
+    }
+
     public CollidingBodyType getType() {
         return collidingBodyType;
     }

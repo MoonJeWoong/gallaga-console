@@ -34,6 +34,14 @@ public class Position {
                 other.column.equals(this.column);
     }
 
+    public Row getRow() {
+        return row;
+    }
+
+    public Column getColumn() {
+        return column;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

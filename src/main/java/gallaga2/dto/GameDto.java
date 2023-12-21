@@ -4,15 +4,15 @@ import java.util.List;
 
 public class GameDto {
 
-    private List<String> boardLines;
+    private List<List<String>> boardLines;
     private int score;
 
-    public GameDto(List<String> boardLines, int score) {
+    public GameDto(List<List<String>> boardLines, int score) {
         this.boardLines = boardLines;
         this.score = score;
     }
 
-    public List<String> getBoardLines() {
+    public List<List<String>> getBoardLines() {
         return boardLines;
     }
 

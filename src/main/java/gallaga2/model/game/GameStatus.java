@@ -2,6 +2,8 @@ package gallaga2.model.game;
 
 import gallaga2.model.collidingbody.CollidingBodyType;
 import gallaga2.model.wrapper.Position;
+
+import java.util.List;
 import java.util.Map;
 
 public class GameStatus {
@@ -14,7 +16,7 @@ public class GameStatus {
         this.score = score;
     }
 
-    public Map<Position, CollidingBodyType> getBoardStatus() {
+    public List<List<CollidingBodyType>> getBoardStatus() {
         return boardStatus.getBoardStatus();
     }
 

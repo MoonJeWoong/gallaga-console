@@ -7,5 +7,6 @@ public enum CollidingBodyType {
     LEFT_BOUNDARY,
     RIGHT_BOUNDARY,
     UPPER_BOUNDARY,
-    ENEMY_GOAL_BOUNDARY
+    ENEMY_GOAL_BOUNDARY,
+    EMPTY
 }

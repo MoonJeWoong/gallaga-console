@@ -3,81 +3,96 @@ package gallaga2.controller;
 import gallaga2.dto.GameDto;
 import gallaga2.model.game.Game;
 import gallaga2.model.wrapper.Direction;
-import gallaga2.util.GameViewConverter;
+import gallaga2.util.GameDtoConverter;
 import gallaga2.view.InputCommand;
 import gallaga2.view.InputView;
 import gallaga2.view.OutputView;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 갤러그 프로그램의 시작 지점이 되는 클래스다.
  * View와 Model을 이용해 갤러그 프로그램의 전체 흐름을 제어한다.
  */
-
 public class Controller {
 
-
     /**
-     * 갤러그 프로그램의 시작점
-     *
-     * 게임 상태 초기화
-     * 게임 첫 화면 출력
-     * 게임 턴 자동 진행 타이머 시작
-     * 반복문 진입
-     * 사용자 입력 대기
-     * Command 값에 따른 메서드 수행 분기 처리
-     * 처리된 결과를 OutputView로 출력
-     * 게임이 종료될 때까지 반복
+     * 갤러그 프로그램 실행 메서드다.
+     * 새로운 게임을 초기화하고 시작한다.
      */
     public void run() {
-        // 게임 상태 초기화
         Game game = new Game();
-        GameDto gameDto = GameViewConverter.convertToGameDto(game.getGameStatus());
-        OutputView.printGameScreen(gameDto);
+        start(game);
+    }
 
-        // 게임 자동 진행 타이머 시작
-        startAutoTurnOverScheduler(game);
+    /**
+     * 주어진 게임을 게임 종료 판정이 나기 전까지 계속 진행시킨다.
+     * 사용자의 입력을 받아 처리하는 부분 외에 일정 주기로 자동 수행되어야 하는 작업들은 Scheduler를 통해 수행한다.
+     *
+     * @param game 진행할 게임
+     */
+    private void start(Game game) {
+        // 게임을 자동 진행하기 위한 스케쥴러를 시작한다.
+        startAutoScheduler(game);
 
-        // 게임 시작
-        while (!game.isGameOver()) {  // 게임 종료 전까지 반복
+        while (!game.isGameOver()) {
             try {
                 InputCommand inputCommand = InputView.inputCommand();
 
-                // Command 값에 따른 메서드 수행 분기 처리
+                // InputCommand 값에 따른 메서드 수행 분기 처리
                 executeCommand(game, inputCommand);
-
-                gameDto = GameViewConverter.convertToGameDto(game.getGameStatus());
-                OutputView.printGameScreen(gameDto);
+                displayGameStatus(game);
             } catch (Exception e) {
                 OutputView.printAlertMessage(e.getMessage());
             }
         }
-        OutputView.printGameEndedMessage();
     }
 
     /**
-     *
-     * @param game
+     * 주어진 게임에 대해 2초 주기로 자동 수행할 작업을 설정하고 스케쥴러를 시작한다. 해당 작업은 메인 스레드와 별개의 스레드에서 동작한다.
+     * @param game 스케쥴러를 동작시킬 대상이 되는 게임
      */
-    private void startAutoTurnOverScheduler(Game game) {
+    private void startAutoScheduler(Game game) {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(() -> {
-            game.executeTurnOver();
-            OutputView.printGameScreen(GameViewConverter.convertToGameDto(game.getGameStatus()));
+        scheduler.scheduleAtFixedRate(schedulerTask(game, scheduler), 2000, 2000, TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * 주어진 게임에 대해 일정 주기로 수행할 작업 내용을 반환한다.
+     * 일정 주기마다 게임을 한 턴 진행시키고, 게임의 현재 상태를 화면에 출력한다.
+     * 게임이 종료되었을 시에는, 실행중이던 스케쥴러를 종료하고 게임 종료 메세지를 출력한 뒤 전체 프로그램을 종료한다.
+     * @param game 스케쥴러를 동작시킬 대상이 되는 게임
+     * @param scheduler 이 작업 내용을 수행할 스케쥴러
+     * @return Scheduler가 주기적으로 수행할 작업의 내용
+     */
+    private Runnable schedulerTask(Game game, ScheduledExecutorService scheduler) {
+        return () -> {
+            game.executeProgress();
+            displayGameStatus(game);
+
             if (game.isGameOver()) {
                 scheduler.shutdown();
                 OutputView.printGameEndedMessage();
                 System.exit(0);
             }
-        }, 2000, 2000, TimeUnit.MILLISECONDS);
+        };
     }
 
     /**
-     *
-     *
-     * @param game
-     * @param inputCommand
+     * 게임의 현재 상태를 화면에 출력한다.
+     * @param game 현재 상태를 출력할 게임
+     */
+    private void displayGameStatus(Game game) {
+        GameDto gameDto = GameDtoConverter.convertToGameDto(game.getGameStatus());
+        OutputView.printGameScreen(gameDto);
+    }
+
+    /**
+     * 주어지는 inputCommand에 따라 game에게 요청할 방식을 선택한다.
+     * @param game inputCommand에 해당하는 작업을 처리할 게임
+     * @param inputCommand 게임 이용자가 입력한 명령
      */
     private void executeCommand(Game game, InputCommand inputCommand) {
         if (inputCommand.equals(InputCommand.MOVE_LEFT)) {
