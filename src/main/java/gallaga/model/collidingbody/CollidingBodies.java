@@ -31,6 +31,7 @@ public class CollidingBodies implements Iterable<CollidingBody> {
 
     /**
      * 그룹에 속한 충돌체들 중 제거되어야 하는 것들의 개수를 반환한다.
+     *
      * @return 그룹에서 제거되어야 하는 충돌체의 수
      */
     public int countEliminatedBodies() {
@@ -50,11 +51,12 @@ public class CollidingBodies implements Iterable<CollidingBody> {
 
     /**
      * 그룹에 속한 충돌체들 중에서 주어진 다른 충돌체와 충돌하는지 여부를 판단한다.
+     *
      * @param other 그룹에 속한 충돌체들과 충돌 여부를 판단할 다른 충돌체
      * @return 그룹에 속한 충돌체들 중 하나라도 주어진 다른 충돌체와 충돌하면 true를 반환
      */
     public boolean isCollidedWith(CollidingBody other) {
-        for(CollidingBody collidingBody : collidingBodies) {
+        for (CollidingBody collidingBody : collidingBodies) {
             if (collidingBody.isCollidedWith(other)) {
                 return true;
             }

@@ -18,6 +18,7 @@ public class Column {
 
     /**
      * 왼쪽 열 좌표를 반환한다.
+     *
      * @return 현재 열 좌표를 기준으로 왼쪽 열 좌표를 반환.
      */
     public Column left() {
@@ -26,6 +27,7 @@ public class Column {
 
     /**
      * 오른쪽 열 좌표를 반환한다.
+     *
      * @return 현재 열 좌표를 기준으로 오른쪽 열 좌표를 반환.
      */
     public Column right() {

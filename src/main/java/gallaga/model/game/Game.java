@@ -20,6 +20,7 @@ public class Game {
 
     /**
      * 플레이어를 특정 방향으로 움직이라는 명령을 처리한다.
+     *
      * @param direction 플레이어를 움직이는 방향
      */
     public void executeMove(Direction direction) {
@@ -49,6 +50,7 @@ public class Game {
 
     /**
      * 게임이 종료되었는지 여부를 확인한다.
+     *
      * @return 게임이 종료되었다면 true를 반환한다.
      */
     public boolean isGameOver() {
@@ -57,6 +59,7 @@ public class Game {
 
     /**
      * 게임이 현재까지 진행된 상태를 반환한다.
+     *
      * @return 게임 보드와 점수 현황 정보
      */
     public GameStatus getGameStatus() {

@@ -18,6 +18,7 @@ public class Row {
 
     /**
      * 윗쪽 행 좌표를 반환한다.
+     *
      * @return 현재 행 좌표를 기준으로 윗쪽 행 좌표를 반환.
      */
     public Row up() {
@@ -26,6 +27,7 @@ public class Row {
 
     /**
      * 아랫쪽 행 좌표를 반환한다.
+     *
      * @return 현재 행 좌표를 기준으로 아랫쪽 행 좌표를 반환.
      */
     public Row down() {

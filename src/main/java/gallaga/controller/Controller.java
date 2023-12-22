@@ -52,6 +52,7 @@ public class Controller {
 
     /**
      * 주어진 게임에 대해 2초 주기로 자동 수행할 작업을 설정하고 스케쥴러를 시작한다. 해당 작업은 메인 스레드와 별개의 스레드에서 동작한다.
+     *
      * @param game 스케쥴러를 동작시킬 대상이 되는 게임
      */
     private void startAutoScheduler(Game game) {
@@ -64,7 +65,8 @@ public class Controller {
      * 일정 주기마다 게임을 한 번 진행시키고, 게임의 현재 상태를 화면에 출력한다.
      * 한 번 게임을 진행한 뒤 게임의 종료 여부를 확인한다.
      * 게임이 종료되었을 시에는, 실행중이던 스케쥴러를 종료하고 게임 종료 메세지를 출력한 뒤 전체 프로그램을 종료한다.
-     * @param game 스케쥴러를 동작시킬 대상이 되는 게임
+     *
+     * @param game      스케쥴러를 동작시킬 대상이 되는 게임
      * @param scheduler 이 작업 내용을 수행할 스케쥴러
      * @return Scheduler가 주기적으로 수행할 작업의 내용
      */
@@ -83,6 +85,7 @@ public class Controller {
 
     /**
      * 게임의 현재 상태를 화면에 출력한다.
+     *
      * @param game 현재 상태를 출력할 게임
      */
     private void displayGameStatus(Game game) {
@@ -92,7 +95,8 @@ public class Controller {
 
     /**
      * 주어지는 inputCommand에 따라 game에게 요청할 방식을 선택한다.
-     * @param game inputCommand에 해당하는 작업을 처리할 게임
+     *
+     * @param game         inputCommand에 해당하는 작업을 처리할 게임
      * @param inputCommand 게임 이용자가 입력한 명령
      */
     private void executeCommand(Game game, InputCommand inputCommand) {

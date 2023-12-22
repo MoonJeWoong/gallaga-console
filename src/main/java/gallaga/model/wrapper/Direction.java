@@ -18,6 +18,7 @@ public enum Direction {
 
     /**
      * 주어진 방향이 현재 방향과 반대되는지 여부를 확인한다.
+     *
      * @param other
      * @return
      */

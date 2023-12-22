@@ -1,7 +1,10 @@
 package gallaga.model.collidingbody.boundary;
 
 import gallaga.model.collidingbody.CollidingBodyType;
-import gallaga.model.wrapper.*;
+import gallaga.model.wrapper.Damage;
+import gallaga.model.wrapper.Direction;
+import gallaga.model.wrapper.HitPoint;
+import gallaga.model.wrapper.Position;
 
 /**
  * 게임 내 경계선들 중 적군 목표 경계선을 나타낸다.

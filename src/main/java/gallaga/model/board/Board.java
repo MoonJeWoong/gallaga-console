@@ -2,13 +2,13 @@ package gallaga.model.board;
 
 import gallaga.exception.ExceedDefaultBulletLimitException;
 import gallaga.exception.MovingPlayerCollidedException;
+import gallaga.model.collidingbody.CollidingBodies;
+import gallaga.model.collidingbody.CollidingBody;
+import gallaga.model.collidingbody.Player;
 import gallaga.model.collidingbody.boundary.EnemyGoalBoundary;
 import gallaga.model.collidingbody.boundary.LeftBoundary;
 import gallaga.model.collidingbody.boundary.RightBoundary;
 import gallaga.model.collidingbody.boundary.UpperBoundary;
-import gallaga.model.collidingbody.CollidingBodies;
-import gallaga.model.collidingbody.CollidingBody;
-import gallaga.model.collidingbody.Player;
 import gallaga.model.wrapper.Column;
 import gallaga.model.wrapper.Direction;
 import gallaga.model.wrapper.Position;
@@ -40,12 +40,12 @@ public class Board {
      * 보드를 초기화하는 과정에서 상단, 좌우, 적군 목표 경계선들을 각 위치에 맞춰 생성한다.
      */
     private void initBoundaries() {
-        for (int i = Column.MIN.getValue() + 1; i<Column.MAX.getValue(); i++) {
+        for (int i = Column.MIN.getValue() + 1; i < Column.MAX.getValue(); i++) {
             boundaries.add(new UpperBoundary(new Position(new Row(0), new Column(i))));
             boundaries.add(new EnemyGoalBoundary(new Position(Row.MAX.up(), new Column(i))));
         }
 
-        for (int i = Row.MIN.getValue(); i<=Row.MAX.getValue(); i++) {
+        for (int i = Row.MIN.getValue(); i <= Row.MAX.getValue(); i++) {
             boundaries.add(new LeftBoundary(new Position(new Row(i), Column.MIN)));
             boundaries.add(new RightBoundary(new Position(new Row(i), Column.MAX)));
         }
@@ -53,6 +53,7 @@ public class Board {
 
     /**
      * 플레이어를 주어진 방향으로 1칸 이동한다.
+     *
      * @param direction 플레이어를 1칸 이동시킬 방향
      */
     public void movePlayer(Direction direction) {
@@ -104,7 +105,7 @@ public class Board {
      */
     private void progressBoundaryCollisions() {
         for (CollidingBody boundary : boundaries) {
-            for (CollidingBody bullet: bullets) {
+            for (CollidingBody bullet : bullets) {
                 if (boundary.isCollidedWith(bullet)) {
                     bullet.collideWith(boundary);
                 }
@@ -136,6 +137,7 @@ public class Board {
 
     /**
      * 적군들 중 체력이 0 이하가 된 수를 반환한다.
+     *
      * @return 체력이 0 이하인 적군의 수
      */
     public int countEliminatedEnemies() {
@@ -145,6 +147,7 @@ public class Board {
     /**
      * 게임이 종료되었는지 판별한다.
      * 적군에 의해 파괴된 적군 목표 경계선이 존재한다면, 게임이 종료된다.
+     *
      * @return 현재 파괴된 적군 목표 경계선이 존재한다면 true를 반환
      */
     public boolean isGameOver() {
@@ -164,6 +167,7 @@ public class Board {
     /**
      * 현재 보드의 상태를 반환한다.
      * 보드의 현재 상태는 플레이어, 적군, 총알, 경계선들의 위치와 타입을 포함한다.
+     *
      * @return 플레이어, 적군, 총알, 경계선들의 위치와 타입을 포함하는 보드의 현재 상태
      */
     public BoardStatus getBoardStatus() {

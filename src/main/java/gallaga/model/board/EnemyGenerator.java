@@ -20,6 +20,7 @@ public class EnemyGenerator {
 
     /**
      * 적군의 위치, 속력, 체력을 무작위로 결정해 새로운 적군을 생성한다.
+     *
      * @return 새롭게 생성된 적군
      */
     public Enemy generate() {
@@ -33,6 +34,7 @@ public class EnemyGenerator {
 
     /**
      * 일정 확률에 따라 적군을 생성할 것인지 아닌지를 결정한다.
+     *
      * @return 적군을 생성할 확률보다 낮은 수가 뽑힌다면 true를 반환
      */
     public boolean isGenerable() {
