@@ -2,6 +2,9 @@ package gallaga.model.wrapper;
 
 import java.util.Objects;
 
+/**
+ * 게임의 충돌체들이 가지는 속력의 값을 나타낸다.
+ */
 public class Velocity {
 
     private int value;

@@ -25,7 +25,7 @@ public class Position {
         if (direction.equals(Direction.RIGHT)) {
             return new Position(row, column.right());
         }
-        throw new IllegalArgumentException("ERROR : 적절하지 못한 방향으로 이동할 수 없습니다.");
+        throw new IllegalArgumentException("적절하지 못한 방향으로 이동할 수 없습니다.");
     }
 
     public Row getRow() {
