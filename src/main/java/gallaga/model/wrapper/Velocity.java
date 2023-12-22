@@ -3,6 +3,7 @@ package gallaga.model.wrapper;
 import java.util.Objects;
 
 public class Velocity {
+
     private int value;
 
     public Velocity(int value) {

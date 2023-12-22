@@ -45,7 +45,6 @@ public class OutputView {
      * @param message
      */
     public static void printAlertMessage(String message) {
-        // 게임 진행 도중 발생하는 알림 메세지를 출력한다.
         System.out.printf(ALERT_MESSAGE_FORMAT, message);
     }
 

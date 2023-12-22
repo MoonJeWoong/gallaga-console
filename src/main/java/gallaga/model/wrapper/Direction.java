@@ -1,6 +1,7 @@
 package gallaga.model.wrapper;
 
 public enum Direction {
+
     UP("DOWN"),
     DOWN("UP"),
     LEFT("RIGHT"),
