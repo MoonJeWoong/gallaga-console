@@ -53,27 +53,6 @@ public abstract class CollidingBody {
     }
 
     /**
-     * 다른 충돌체의 파괴력만큼 체력을 감소시켜 충돌 처리를 진행한다.
-     * @param other 충돌 처리를 진행할 다른 충돌체
-     */
-    public void collideWith(CollidingBody other) {
-        decreaseHitPoint(other.damage);
-    }
-
-    /**
-     * 현재 충돌체의 속력 수치만큼 진행 방향으로 위치를 변경한다.
-     */
-    public void move() {
-        for (int i=0; i<velocity.getValue(); i++) {
-            this.position = position.move(direction);
-        }
-    }
-
-    private void decreaseHitPoint(Damage damage) {
-        hitPoint = hitPoint.decreaseHitPoint(damage.getValue());
-    }
-
-    /**
      * 현재 충돌체의 방향과 속력을 이용해 다음 예상 진행 경로를 계산한다.
      * 예상 진행 경로에는 현재 충돌체의 위치를 항상 포함한다.
      * @return 충돌체의 다음 예상 이동 경로를 반환
@@ -86,6 +65,27 @@ public abstract class CollidingBody {
             nextPath.add(currentPosition.move(direction));
         }
         return nextPath;
+    }
+
+    /**
+     * 다른 충돌체의 파괴력만큼 체력을 감소시켜 충돌 처리를 진행한다.
+     * @param other 충돌 처리를 진행할 다른 충돌체
+     */
+    public void collideWith(CollidingBody other) {
+        decreaseHitPoint(other.damage);
+    }
+
+    private void decreaseHitPoint(Damage damage) {
+        hitPoint = hitPoint.decreaseHitPoint(damage.getValue());
+    }
+
+    /**
+     * 현재 충돌체의 속력 수치만큼 진행 방향으로 위치를 변경한다.
+     */
+    public void move() {
+        for (int i=0; i<velocity.getValue(); i++) {
+            this.position = position.move(direction);
+        }
     }
 
     public boolean isEliminated() {

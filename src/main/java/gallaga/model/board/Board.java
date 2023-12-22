@@ -139,7 +139,6 @@ public class Board {
      * @return 체력이 0 이하인 적군의 수
      */
     public int countEliminatedEnemies() {
-        //현재 적군 중 체력이 0 이하인 개체 수를 반환
         return enemies.countEliminatedBodies();
     }
 
