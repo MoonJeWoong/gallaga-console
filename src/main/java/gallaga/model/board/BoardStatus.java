@@ -29,7 +29,7 @@ public class BoardStatus {
     private List<List<CollidingBodyType>> initBoardStatus() {
         List<List<CollidingBodyType>> initBoardStatus = new ArrayList<>();
 
-        for (int count = Row.MIN.getValue(); count <= Row.MAX.getValue(); count++) {
+        for (int count = Row.MIN_VALUE; count <= Row.MAX_VALUE; count++) {
             List<CollidingBodyType> boardRow = initBoardRow();
             initBoardStatus.add(boardRow);
         }
@@ -43,7 +43,7 @@ public class BoardStatus {
      */
     private List<CollidingBodyType> initBoardRow() {
         List<CollidingBodyType> boardRow = new ArrayList<>();
-        for (int count = Column.MIN.getValue(); count <= Column.MAX.getValue(); count++) {
+        for (int count = Column.MIN_VALUE; count <= Column.MAX_VALUE; count++) {
             boardRow.add(CollidingBodyType.EMPTY);
         }
         return boardRow;

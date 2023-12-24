@@ -14,7 +14,6 @@ import gallaga.model.wrapper.Position;
 public class LeftBoundary extends Boundary {
 
     public LeftBoundary(Position position) {
-        super(position, Direction.RIGHT, new HitPoint(Integer.MAX_VALUE), new Damage(0),
-                CollidingBodyType.LEFT_BOUNDARY);
+        super(position, Direction.RIGHT, HitPoint.MAX, Damage.ZERO, CollidingBodyType.LEFT_BOUNDARY);
     }
 }

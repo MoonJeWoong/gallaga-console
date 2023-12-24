@@ -7,6 +7,8 @@ import java.util.Objects;
  */
 public class Velocity {
 
+    public static final Velocity ZERO = new Velocity(0);
+
     private int value;
 
     public Velocity(int value) {

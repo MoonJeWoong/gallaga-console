@@ -8,11 +8,10 @@ import gallaga.model.wrapper.*;
  */
 public class Player extends CollidingBody {
 
-    private static final Velocity DEFAULT_STOP_VELOCITY = new Velocity(0);
     private static final Velocity DEFAULT_MOVING_VELOCITY = new Velocity(1);
 
     public Player() {
-        super(new Position(Row.MAX, new Column(5)), Direction.UP, new Velocity(0), new HitPoint(1), new Damage(0),
+        super(new Position(Row.MAX, new Column(5)), Direction.UP, Velocity.ZERO, new HitPoint(1), Damage.ZERO,
                 CollidingBodyType.PLAYER);
     }
 
@@ -33,7 +32,7 @@ public class Player extends CollidingBody {
      */
     public void stopMoving() {
         changeDirection(Direction.UP);
-        changeVelocity(DEFAULT_STOP_VELOCITY);
+        changeVelocity(Velocity.ZERO);
     }
 
     /**

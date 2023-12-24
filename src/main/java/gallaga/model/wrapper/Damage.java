@@ -7,6 +7,8 @@ import java.util.Objects;
  */
 public class Damage {
 
+    public static final Damage ZERO = new Damage(0);
+
     private final int value;
 
     public Damage(int value) {

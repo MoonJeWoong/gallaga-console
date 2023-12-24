@@ -4,11 +4,14 @@ import java.util.Objects;
 
 /**
  * 게임 내 공간의 행 좌표 값을 나타낸다.
+ * 플레이어 관점 기준으로 가장 윗쪽이 0의 행 좌표에 해당한다.
  */
 public class Row {
 
-    public static final Row MAX = new Row(15);
-    public static final Row MIN = new Row(0);
+    public static final int MIN_VALUE = 0;
+    public static final int MAX_VALUE = 15;
+    public static final Row MIN = new Row(MIN_VALUE);
+    public static final Row MAX = new Row(MAX_VALUE);
 
     private final int value;
 

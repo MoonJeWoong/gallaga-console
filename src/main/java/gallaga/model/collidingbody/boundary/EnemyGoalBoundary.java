@@ -15,6 +15,7 @@ import gallaga.model.wrapper.Position;
 public class EnemyGoalBoundary extends Boundary {
 
     public EnemyGoalBoundary(Position position) {
-        super(position, Direction.UP, new HitPoint(1), new Damage(0), CollidingBodyType.ENEMY_GOAL_BOUNDARY);
+        super(position, Direction.UP, new HitPoint(1), Damage.ZERO,
+                CollidingBodyType.ENEMY_GOAL_BOUNDARY);
     }
 }

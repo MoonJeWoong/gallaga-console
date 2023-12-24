@@ -40,14 +40,14 @@ public class Board {
      * 보드를 초기화하는 과정에서 상단, 좌우, 적군 목표 경계선들을 각 위치에 맞춰 생성한다.
      */
     private void initBoundaries() {
-        for (int i = Column.MIN.getValue() + 1; i < Column.MAX.getValue(); i++) {
-            boundaries.add(new UpperBoundary(new Position(new Row(0), new Column(i))));
-            boundaries.add(new EnemyGoalBoundary(new Position(Row.MAX.up(), new Column(i))));
+        for (int index = Column.MIN_VALUE + 1; index < Column.MAX_VALUE; index++) {
+            boundaries.add(new UpperBoundary(new Position(Row.MIN, new Column(index))));
+            boundaries.add(new EnemyGoalBoundary(new Position(Row.MAX.up(), new Column(index))));
         }
 
-        for (int i = Row.MIN.getValue(); i <= Row.MAX.getValue(); i++) {
-            boundaries.add(new LeftBoundary(new Position(new Row(i), Column.MIN)));
-            boundaries.add(new RightBoundary(new Position(new Row(i), Column.MAX)));
+        for (int index = Row.MIN_VALUE; index <= Row.MAX_VALUE; index++) {
+            boundaries.add(new LeftBoundary(new Position(new Row(index), Column.MIN)));
+            boundaries.add(new RightBoundary(new Position(new Row(index), Column.MAX)));
         }
     }
 

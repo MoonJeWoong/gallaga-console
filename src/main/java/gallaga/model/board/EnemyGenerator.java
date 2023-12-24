@@ -10,7 +10,7 @@ import gallaga.util.NumberGenerator;
 public class EnemyGenerator {
 
     private static final int GENERATE_PROBABILITY = 30;
-    public static final Row DEFAULT_ENEMY_GRENRATED_ROW = new Row(1);
+    public static final Row DEFAULT_ENEMY_GRENRATED_ROW = Row.MIN.down();
 
     private NumberGenerator numberGenerator;
 

@@ -7,6 +7,8 @@ import java.util.Objects;
  */
 public class HitPoint {
 
+    public static final HitPoint MAX = new HitPoint(Integer.MAX_VALUE);
+
     private final int value;
 
     public HitPoint(int value) {

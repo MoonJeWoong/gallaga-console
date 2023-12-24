@@ -3,8 +3,8 @@ package gallaga.model.wrapper;
 import java.util.Objects;
 
 /**
- * 게임 내 공간의 위치 좌표 값을 나타낸다.
- * 행 좌표와 열 좌표로 구성되며 현재 좌표를 기준으로 특정 방향으로 이동한 좌표를 계산할 수 있다.
+ * 게임 내 2차원 공간의 위치 좌표 값을 나타낸다.
+ * 행 좌표와 열 좌표로 구성되며 플레이어 관점 기준으로 최상단 좌측이 (0,0) 좌표에 해당한다.
  */
 public class Position {
 

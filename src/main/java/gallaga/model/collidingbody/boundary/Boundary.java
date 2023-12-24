@@ -12,6 +12,6 @@ public abstract class Boundary extends CollidingBody {
 
     public Boundary(Position position, Direction direction, HitPoint hitPoint, Damage damage,
                     CollidingBodyType collidingBodyType) {
-        super(position, direction, new Velocity(0), hitPoint, damage, collidingBodyType);
+        super(position, direction, Velocity.ZERO, hitPoint, damage, collidingBodyType);
     }
 }
