@@ -29,8 +29,8 @@ public interface Board {
     void moveEnemiesBullets();
     void removeEliminatedEnemiesBullets();
     int countEliminatedEnemies();
+    void generateEnemy();
 
     boolean isGameOver();
-    void generateEnemy();
     BoardStatus getBoardStatus();
 }
