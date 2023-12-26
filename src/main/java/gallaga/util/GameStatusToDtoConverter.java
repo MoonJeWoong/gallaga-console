@@ -40,7 +40,7 @@ public class GameStatusToDtoConverter {
      * gameStatus가 갖고 있는 현재 보드와 점수를 변환하여 GameDto를 생성 및 반환한다.
      * 변환 과정에서 보드 상황을 나타내기 위한 CollidingBodyType 리스트를 View와 사전에 약속된 Symbol들의 리스트로 한 줄씩 변환한다.
      * @param gameStatus 현재 보드와 점수 정보를 포함하는 게임의 상태
-     * @return
+     * @return View와 약속한 형태로 변환된 게임 정보
      */
     public static GameDto convertToGameDto(GameStatus gameStatus) {
         List<List<CollidingBodyType>> boardStatus = gameStatus.getBoardStatus();

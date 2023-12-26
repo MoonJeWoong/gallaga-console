@@ -5,5 +5,6 @@ package gallaga.util;
  * 수를 선택할 때 시작하는 수는 포함하고 끝 수는 포함하지 않는다.
  */
 public interface NumberGenerator {
+
     int generate(int start, int end);
 }
