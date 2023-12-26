@@ -15,12 +15,12 @@ public class HitPoint {
         this.value = value;
     }
 
-    public boolean isLessOrEqualThanZero() {
-        return value <= 0;
-    }
-
     public HitPoint decreaseHitPoint(int value) {
         return new HitPoint(this.value - value);
+    }
+
+    public boolean isLessOrEqualThanZero() {
+        return value <= 0;
     }
 
     public boolean isGreaterThanZero() {
