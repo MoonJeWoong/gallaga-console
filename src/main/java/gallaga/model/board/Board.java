@@ -1,5 +1,6 @@
 package gallaga.model.board;
 
+import gallaga.dto.BoardStatusDto;
 import gallaga.exception.ExceedDefaultBulletLimitException;
 import gallaga.exception.MovingPlayerCollidedException;
 import gallaga.model.collidingbody.CollidingBodies;
@@ -165,17 +166,18 @@ public class Board {
     }
 
     /**
-     * 현재 보드의 상태를 반환한다.
-     * 보드의 현재 상태는 플레이어, 적군, 총알, 경계선들의 위치와 타입을 포함한다.
+     * 현재 보드의 상태 정보를 반환한다.
+     * 보드의 현재 상태는 플레이어, 적군, 총알, 경계선들의 위치와 타입이름을 포함한다.
      *
-     * @return 플레이어, 적군, 총알, 경계선들의 위치와 타입을 포함하는 보드의 현재 상태
+     * @return 플레이어, 적군, 총알, 경계선들의 위치와 타입이름을 포함하는 보드의 현재 상태
      */
-    public BoardStatus getBoardStatus() {
-        BoardStatus currentStatus = new BoardStatus();
-        currentStatus.putCollidingBody(player);
-        currentStatus.putCollidingBodies(bullets);
-        currentStatus.putCollidingBodies(enemies);
-        currentStatus.putCollidingBodies(boundaries);
-        return currentStatus;
+    public BoardStatusDto getBoardStatus() {
+        BoardStatusDto boardStatusDto = new BoardStatusDto();
+        boardStatusDto.putCollidingBody(player);
+        boardStatusDto.putCollidingBodies(bullets);
+        boardStatusDto.putCollidingBodies(enemies);
+        boardStatusDto.putCollidingBodies(boundaries);
+
+        return boardStatusDto;
     }
 }

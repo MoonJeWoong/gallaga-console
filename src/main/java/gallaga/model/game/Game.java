@@ -1,5 +1,6 @@
 package gallaga.model.game;
 
+import gallaga.dto.GameStatusDto;
 import gallaga.model.board.Board;
 import gallaga.model.wrapper.Direction;
 
@@ -62,7 +63,7 @@ public class Game {
      *
      * @return 게임 보드와 점수 현황 정보
      */
-    public GameStatus getGameStatus() {
-        return new GameStatus(board.getBoardStatus(), score);
+    public GameStatusDto getGameStatus() {
+        return new GameStatusDto(board.getBoardStatus(), score);
     }
 }

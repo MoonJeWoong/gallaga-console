@@ -1,9 +1,8 @@
 package gallaga.controller;
 
-import gallaga.dto.GameDto;
+import gallaga.dto.GameStatusDto;
 import gallaga.model.game.Game;
 import gallaga.model.wrapper.Direction;
-import gallaga.util.GameStatusToDtoConverter;
 import gallaga.view.InputCommand;
 import gallaga.view.InputView;
 import gallaga.view.OutputView;
@@ -89,8 +88,8 @@ public class Controller {
      * @param game 현재 상태를 출력할 게임
      */
     private void displayGameStatus(Game game) {
-        GameDto gameDto = GameStatusToDtoConverter.convertToGameDto(game.getGameStatus());
-        OutputView.printGameScreen(gameDto);
+        GameStatusDto gameStatusDto = game.getGameStatus();
+        OutputView.printGameScreen(gameStatusDto);
     }
 
     /**

@@ -1,7 +1,6 @@
 package gallaga.view;
 
-import gallaga.dto.GameDto;
-
+import gallaga.dto.GameStatusDto;
 import java.util.List;
 
 /**
@@ -19,15 +18,14 @@ public class OutputView {
 
     /**
      * 현재 게임에 대한 정보를 기반으로 화면에 게임 현황을 출력한다.
-     * @param gameDto 현재 게임에 대한 정보가 담겨있는 dto
+     * @param gameStatusDto 현재 게임에 대한 정보가 담겨있는 dto
      */
-    public static void printGameScreen(GameDto gameDto) {
+    public static void printGameScreen(GameStatusDto gameStatusDto) {
         // 기존 화면 출력 제거
         clearExistedView();
 
-        System.out.printf(SCORE_LINE_FORMAT, gameDto.getScore());
-        for (List<String> line : gameDto.getBoardLines()) {
-            // gameDto로부터 넘겨받은 심볼 정보들을 출력을 위한 기호로 변환 후 출력한다.
+        System.out.printf(SCORE_LINE_FORMAT, gameStatusDto.getScore());
+        for (List<String> line : gameStatusDto.getBoardLines()) {
             List<String> convertedLine = SymbolToMarkConverter.convert(line);
             System.out.println(String.join("", convertedLine));
         }
