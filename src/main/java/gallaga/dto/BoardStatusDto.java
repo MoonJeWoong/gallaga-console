@@ -8,6 +8,10 @@ import gallaga.model.wrapper.Row;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 게임 보드판의 현재 상태를 나타낸다.
+ * 보드 내 요소들의 위치를 보드 사이즈에 맞게 2차원 리스트로 나타낸다.
+ */
 public class BoardStatusDto {
 
     private final List<List<String>> boardLines;
